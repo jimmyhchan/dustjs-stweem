@@ -1,0 +1,19 @@
+{
+  "name": "stweem",
+  "version": "0.0.0",
+  "description": "stream contents to dust files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "JSONStream": "^0.10.0",
+    "dustjs-linkedin": "^2.6.1",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  }
+}
