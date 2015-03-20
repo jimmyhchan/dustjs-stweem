@@ -4,9 +4,17 @@ var dust = require('dustjs-linkedin'),
 
 var stweem = function(tlName, writeCb) {
   var transform = function(chunk, enc, cb) {
-    dust.stream(tlName, chunk, writeCb);
-    cb();
+    var data = {foo: chunk};
+    var s = dust.stream(tlName, data);
+    s.on('data', function(o) {
+      cb(null, o);
+    });
+    s.on('error', function(e) {
+      cb(e);
+    });
   };
 
   return through.obj(transform);
 };
+
+module.exports = stweem;
