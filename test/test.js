@@ -4,14 +4,14 @@ var test = require('tape'),
     dust = require('dustjs-linkedin'),
     tlName = 'tl',
     source,
-    textStream;
+    objStream;
 
-textStream = new Readable({objectMode:true});
-textStream._read = function() {
-  textStream.push('1');
-  textStream.push('2');
-  textStream.push('3');
-  textStream.push(null);
+objStream = new Readable({objectMode:true});
+objStream._read = function() {
+  objStream.push({foo: 1});
+  objStream.push({foo: 2});
+  objStream.push({foo: 3});
+  objStream.push(null);
 };
 source = 'hello {foo}';
 dust.loadSource(dust.compile(source, tlName));
@@ -31,7 +31,7 @@ test('stweem exposes a writable stream', function(t) {
   t.plan(3);
   var s = stweem(tlName),
       count = 1;
-  textStream.pipe(s);
+  objStream.pipe(s);
   s.on('data', function(o) {
     t.equal(o, 'hello '+count);
     count++;
