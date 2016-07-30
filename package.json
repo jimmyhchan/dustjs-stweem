@@ -1,6 +1,6 @@
 {
   "name": "dustjs-stweem",
-  "version": "0.0.0",
+  "version": "0.0.1-0",
   "description": "stream contents to dust",
   "main": "index.js",
   "scripts": {
